@@ -1,0 +1,48 @@
+{%extends 'ExpenseTracker/layout.html'%}
+{% load static%}
+
+    {%block title%}
+        Dashboard
+    {%endblock title%}
+
+   
+
+
+{%block body%}
+    <!-- <div class="row"><div class="column"> -->
+    <table >
+        <tr>
+            {%for item in records.first.keys%}
+            <th>{{item}}</th>
+            {%endfor%}
+        </tr>
+
+        {% for item in records %}
+        <tr>
+            {% for value in item.values%}
+            <td>{{value}}</td>
+            {%endfor%}
+        </tr>
+        {%endfor%}
+    </table>
+    <!-- </div></div> -->
+
+    <div id="graphs">
+        <div class="container">
+                <div class="row">
+                    <div class="col-md"><canvas id="chart_mode_of_payment" width="400" height="180" style="border:1px solid #000000;"></canvas></div>
+                    <div class="col-md"><canvas id="chart_expenseType" width="400" height="180" style="border:1px solid #000000;"></canvas></div>
+                </div>
+                <div class="row">
+                    <div class="col-md"> <canvas id="chart_category" width="400" height="180" style="border:1px solid #000000;"></canvas></div>
+                    <div class="col-md"><canvas id="chart_date" width="400" height="180" style="border:1px solid #000000;"></canvas></div>
+                </div>
+        </div>
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+        integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+        <script src="{% static 'ExpenseTracker/js/visualizer.js' %}" ></script>
+
+    </div>
+{%endblock body%}

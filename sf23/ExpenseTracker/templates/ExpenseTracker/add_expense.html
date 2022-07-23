@@ -1,0 +1,16 @@
+{%extends 'ExpenseTracker/layout.html'%}
+
+{%block title%}
+Add Expense
+{%endblock title%}
+
+{%block body%}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <h2 style="margin-bottom: 2rem;">Add Expense Here</h2>
+        {{ form.as_p }}
+        <input type="submit">
+    </div>
+</form>
+{%endblock body%}
